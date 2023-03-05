@@ -18,4 +18,9 @@ const totalAmountAfterInterest = principalAmount * eulersNumber ** (APYAsDecimal
 // - Functions.encodeInt256
 // - Functions.encodeString
 // Or return a custom Buffer for a custom byte encoding
+
+//0x2ae44eb9790639d8c36c99e5d34952d3b31118b2caced0f70a4f727dfaa9c124
+//const output =  Functions.keccak256(args[0], args[1], secrets.discountCode)
+//const expectedOutput = "0x2ae44eb9790639d8c36c99e5d34952d3b31118b2caced0f70a4f727dfaa9c124"
+
 return Functions.encodeUint256(Math.round(totalAmountAfterInterest))
