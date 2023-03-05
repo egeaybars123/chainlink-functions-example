@@ -1,6 +1,7 @@
 const { getDecodedResultLog, getRequestConfig } = require("../../FunctionsSandboxLibrary")
 const { generateRequest } = require("./buildRequestJSON")
 const { VERIFICATION_BLOCK_CONFIRMATIONS, networkConfig } = require("../../network-config")
+//const { ethers } = require("ethers")
 const readline = require("readline-promise").default
 
 task("functions-request", "Initiates a request from a Functions client contract")
@@ -54,6 +55,12 @@ task("functions-request", "Initiates a request from a Functions client contract"
     const requestConfig = getRequestConfig(unvalidatedRequestConfig)
 
     const request = await generateRequest(requestConfig, taskArgs)
+    const [owner] = await ethers.getSigners();
+    const ascii_address = owner.address.slice(2)
+
+    console.log("The address you are putting in args array:",ascii_address)
+    request.args[1] = ascii_address
+    console.log(request.args)
 
     // Check that the subscription is valid
     let subInfo
@@ -187,6 +194,8 @@ task("functions-request", "Initiates a request from a Functions client contract"
           }
         }
       )
+
+      
       // Initiate the on-chain request after all listeners are initialized
       console.log(`\nRequesting new data for FunctionsConsumer contract ${contractAddr} on network ${network.name}`)
       const requestTx = await clientContract.executeRequest(

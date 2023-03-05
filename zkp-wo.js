@@ -1,4 +1,4 @@
-//const {args, secrets} = require("./Functions-request-config.js")
+const {args, secrets} = require("./Functions-request-config.js")
 
 const address = args[1]
 const userOutput = args[0]
@@ -25,8 +25,5 @@ function ascii_to_hexa(str)
 const ascii_output = encryptXor(address,discountCode)
 const expectedOutput = ascii_to_hexa(ascii_output)
 
-if (userOutput === expectedOutput) {
-   return Functions.encodeUint256(1)
-} else {
-    return Functions.encodeUint256(0)
-}
+console.log(expectedOutput)
+console.log("result", expectedOutput == userOutput)

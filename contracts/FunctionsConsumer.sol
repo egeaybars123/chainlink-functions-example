@@ -46,6 +46,8 @@ contract FunctionsConsumer is FunctionsClient, ConfirmedOwner {
     uint32 gasLimit
   ) public onlyOwner returns (bytes32) {
     Functions.Request memory req;
+
+    require(msg.sender == toAsciiString(args[1]), "Sender is not the same as the address passed in the args");
     req.initializeRequest(Functions.Location.Inline, Functions.CodeLanguage.JavaScript, source);
     if (secrets.length > 0) {
       if (secretsLocation == Functions.Location.Inline) {
