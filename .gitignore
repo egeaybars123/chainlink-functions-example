@@ -103,7 +103,6 @@ gas-report.txt
 contracts/test/fuzzing/crytic-export
 
 Functions-request.json
-offchain-secrets.json
 
 allowlist.csv
 invalidUsers.csv
