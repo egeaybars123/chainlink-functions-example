@@ -43,7 +43,7 @@ const requestConfig = {
   // expected type of the returned value
   expectedReturnType: ReturnType.uint256,
   // Redundant URLs which point to encrypted off-chain secrets
-  secretsURLs: [],
+  secretsURLs: ["https://raw.githubusercontent.com/egeaybars123/chainlink-functions-example/main/offchain-secrets.json"],
   // Default offchain secrets object used by the `functions-build-offchain-secrets` command
   globalOffchainSecrets: {discountCode: "Chainlink"},
   // Per-node offchain secrets objects used by the `functions-build-offchain-secrets` command
